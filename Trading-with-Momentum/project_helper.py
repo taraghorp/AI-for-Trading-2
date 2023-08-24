@@ -27,12 +27,16 @@ def _generate_traces(name_df_color_data):
 
 
 def plot_stock(prices, title):
+    
+    fig = go.Figure()
     config = helper.generate_config()
     layout = go.Layout(title=title)
 
     stock_trace = _generate_stock_trace(prices)
 
-    offline_py.iplot({'data': [stock_trace], 'layout': layout}, config=config)
+    #offline_py.iplot({'data': [stock_trace], 'layout': layout}, config=config)
+    fig = go.Figure({'data': [stock_trace], 'layout': layout}, config=config)
+    fig.show(renderer='notebook')
 
 
 def print_dataframe(df, n_rows=10, n_columns=3):
